@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "mocha",
 		"prepare": "husky install",
-		"build": "webpack && NODE_ENV=production webpack"
+		"build": " webpack"
 	},
 	"repository": {
 		"type": "git",
