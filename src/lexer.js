@@ -333,7 +333,8 @@ Mexp.lex = function (inp, tokens) {
       if (ptc[j] === 0) {
         if ([0, 2, 3, 4, 5, 9, 11, 12, 13].indexOf(cType) !== -1) {
           if (allowed[cType] !== true) {
-            throw new Mexp.Exception(cToken + ' is not allowed after ' + prevKey)
+            let prevKeyError = !prevKey ? 'blank input' : prevKey
+            throw new Mexp.Exception(cToken + ' is not allowed after ' + prevKeyError)
           }
           str.push(closingParObj)
           allowed = type1
@@ -343,7 +344,8 @@ Mexp.lex = function (inp, tokens) {
       } else break
     }
     if (allowed[cType] !== true) {
-      throw new Mexp.Exception(cToken + ' is not allowed after ' + prevKey)
+      let prevKeyError = !prevKey ? 'blank input' : prevKey
+      throw new Mexp.Exception(cToken + ' is not allowed after ' + prevKeyError)
     }
     if (asterick[cType] === true) {
       cType = 2
